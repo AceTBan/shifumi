@@ -1,28 +1,52 @@
 import random
+
 def shifumi():
-    choix = ["pierre", "feuille", "ciseaux"] #liste des choix possibles
-    machine_choice = random.randint(0,2) #machine choisi un nombre aleatoire entre 0 et 2 qui correspond a la position dans la liste des differentes armes
-    player_choice = input("Choisissez entre pierre, feuille ou ciseaux: ") #joueur choisi une arme parmi les trois possibles
+    choix = ["pierre", "feuille", "ciseaux", "lézard", "Spock"] # liste des choix possibles
+    machine_choice = random.randint(0, 4) # machine choisit un nombre aléatoire entre 0 et 4 qui correspond à la position dans la liste des différentes armes
+    player_choice = input("Choisissez entre pierre, feuille, ciseaux, lézard ou Spock: ") # joueur choisit une arme parmi les cinq possibles
     print(f"La machine a joué {choix[machine_choice]} et vous avez joué {player_choice}")
     
     if player_choice == "pierre":
-        if machine_choice == 0:
-            print("Egalite")
-        elif machine_choice == 1:
+        if choix[machine_choice] == "pierre":
+            print("Égalité")
+        elif choix[machine_choice] in ["feuille", "Spock"]:
             print(f"{choix[machine_choice]} gagne contre {player_choice}!")
         else:
             print(f"{player_choice} gagne contre {choix[machine_choice]}!")
+    
     elif player_choice == "feuille":
-        if machine_choice == 1:
-            print("Egalite")
-        elif machine_choice == 2:
+        if choix[machine_choice] == "feuille":
+            print("Égalité")
+        elif choix[machine_choice] in ["ciseaux", "lézard"]:
+            print(f"{choix[machine_choice]} gagne contre {player_choice}!")
+        else:
+            print(f"{player_choice} gagne contre {choix[machine_choice]}!")
+    
+    elif player_choice == "ciseaux":
+        if choix[machine_choice] == "ciseaux":
+            print("Égalité")
+        elif choix[machine_choice] in ["pierre", "Spock"]:
+            print(f"{choix[machine_choice]} gagne contre {player_choice}!")
+        else:
+            print(f"{player_choice} gagne contre {choix[machine_choice]}!")
+    
+    elif player_choice == "lézard":
+        if choix[machine_choice] == "lézard":
+            print("Égalité")
+        elif choix[machine_choice] in ["pierre", "ciseaux"]:
+            print(f"{choix[machine_choice]} gagne contre {player_choice}!")
+        else:
+            print(f"{player_choice} gagne contre {choix[machine_choice]}!")
+    
+    elif player_choice == "Spock":
+        if choix[machine_choice] == "Spock":
+            print("Égalité")
+        elif choix[machine_choice] in ["feuille", "lézard"]:
             print(f"{choix[machine_choice]} gagne contre {player_choice}!")
         else:
             print(f"{player_choice} gagne contre {choix[machine_choice]}!")
     else:
-        if machine_choice == 2:
-            print("Egalite")
-        elif machine_choice == 0:
-            print(f"{choix[machine_choice]} gagne contre {player_choice}!")
-        else:
-            print(f"{player_choice} gagne contre {choix[machine_choice]}!")
+        print("Choix invalide. Veuillez choisir entre pierre, feuille, ciseaux, lézard ou Spock.")
+
+# Exécuter la fonction
+shifumi()
